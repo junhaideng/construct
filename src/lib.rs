@@ -53,7 +53,7 @@ pub fn construct(input: TokenStream) -> TokenStream {
                             let tokens: HashMap<_, _> = tokens
                                 .split(',')
                                 .map(|item| {
-                                    // 根据 = 进行分隔
+                                    // split by =
                                     let kv: Vec<_> = item.splitn(2, '=').collect();
                                     if kv.is_empty() {
                                         panic!("invalid field attr {}", item);
@@ -91,7 +91,7 @@ pub fn construct(input: TokenStream) -> TokenStream {
                         })
                         .collect();
 
-                    // return  default field attr
+                    // return default field attr
                     if res.is_empty() {
                         FieldAttr {
                             setter: true,
